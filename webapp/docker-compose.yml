@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  sheetseducare:
+    image: sheetseducare:latest
+
+    environment:
+      SPREADSHEET_ID: "SPREADSHEET_ID_PLACEHOLDER"
+      GOOGLE_APPLICATION_CREDENTIALS: "./credentials/service-account-key.json"
+      REDIS_URL: "redis://n8n_redis:6379/0"
+      ADMIN_EMAIL: "educare050@gmail.com"
+      CALENDAR_ID: "educare050@gmail.com"
+      META_WA_TOKEN: "META_WA_TOKEN_PLACEHOLDER"
+
+    networks:
+      - educareNet
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+      labels:
+        - "traefik.enable=true"
+
+        - "traefik.http.routers.sheetseducare.rule=Host(`gestion.educare.sbs`)"
+
+        - "traefik.http.routers.sheetseducare.entrypoints=websecure"
+
+        - "traefik.http.routers.sheetseducare.tls=true"
+
+        - "traefik.http.routers.sheetseducare.tls.certresolver=letsencryptresolver"
+
+        - "traefik.http.services.sheetseducare.loadbalancer.server.port=3000"
+
+        - "traefik.docker.network=educareNet"
+
+networks:
+  educareNet:
+    external: true
