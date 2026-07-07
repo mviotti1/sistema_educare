@@ -35,8 +35,8 @@ CRUD completo de alumnos, profesores, clases, reservas, clases recurrentes, disp
 
 ### `n8n_workflows/` — Bot conversacional (27 workflows)
 
-- **`main`**: agente conversacional principal (LangChain + RAG sobre Supabase) que enruta a sub-agentes especializados: `booking_agent`, `faq_agent`, `medios_de_pago_agent`, `politicas_de_cancelacion_agent`, `quienes_somos_agent`, `delegate_to_human`.
-- **Tools de negocio**: `check_availability` (con feriados, bloqueos por profesor y fallback de duración 60→90 min), `book_class`, `cancel_class`, `consult_active_classes`.
+- **`main`**: agente conversacional principal (LangChain + RAG sobre Supabase) que enruta a sub-agentes especializados: `booking_agent`, `faq_agent`.
+- **Tools de negocio**: `check_availability` (con feriados, bloqueos por profesor y fallback de duración 60→90 min), `book_class`.
 - **Mensajería**: `send_message` (con typing indicator nativo de WhatsApp y threading de mensajes), `send_reminders` (recordatorios a alumnos y profesores vía plantillas de Meta), `notify_professor`, `upload_image_to_meta`.
 - **Resiliencia**: `chatwoot_polling_recovery` — polling de respaldo cada 5 min que recupera mensajes si el webhook de Chatwoot falla; deduplicación con Redis SET.
 
