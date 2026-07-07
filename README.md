@@ -43,14 +43,3 @@ CRUD completo de alumnos, profesores, clases, reservas, clases recurrentes, disp
 ## Stack
 
 Next.js · n8n (queue mode) · LangChain · Meta WhatsApp Cloud API · Chatwoot · Google Sheets API · Google Calendar API · Redis · Supabase (pgvector/RAG) · Docker Swarm · Traefik · PostgreSQL
-
-## Cómo levantar el panel localmente
-
-```bash
-cd webapp
-npm install
-# crear .env.local con SPREADSHEET_ID, GOOGLE_APPLICATION_CREDENTIALS, etc.
-npm run dev
-```
-
-Los workflows se importan en cualquier instancia de n8n (`Import from file`), reemplazando los placeholders por credenciales propias.
